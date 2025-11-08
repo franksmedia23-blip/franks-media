@@ -330,6 +330,16 @@
             font-weight: 400;
             text-transform: none;
         }
+
+        .project-card {
+            transition: all 0.4s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #2563eb;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -349,6 +359,7 @@
                     <a href="#home" class="nav-link text-gray-700 hover:text-black text-lg">Home</a>
                     <a href="#services" class="nav-link text-gray-700 hover:text-black text-lg">Services</a>
                     <a href="#work" class="nav-link text-gray-700 hover:text-black text-lg">Portfolio</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-black text-lg">Projects</a>
                     <a href="#video" class="nav-link text-gray-700 hover:text-black text-lg">Video</a>
                     <a href="#about" class="nav-link text-gray-700 hover:text-black text-lg">About</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-black text-lg">Contact</a>
@@ -375,6 +386,7 @@
                     <a href="#home" class="text-gray-700 hover:text-black text-xl font-medium">Home</a>
                     <a href="#services" class="text-gray-700 hover:text-black text-xl font-medium">Services</a>
                     <a href="#work" class="text-gray-700 hover:text-black text-xl font-medium">Portfolio</a>
+                    <a href="#projects" class="text-gray-700 hover:text-black text-xl font-medium">Projects</a>
                     <a href="#video" class="text-gray-700 hover:text-black text-xl font-medium">Video</a>
                     <a href="#about" class="text-gray-700 hover:text-black text-xl font-medium">About</a>
                     <a href="#contact" class="text-gray-700 hover:text-black text-xl font-medium">Contact</a>
@@ -580,8 +592,74 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="section-spacing bg-gray-50">
+        <div class="container-custom">
+            <div class="text-center max-w-4xl mx-auto mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-bold text-black mb-8 display-font">Our projects</h2>
+                <p class="text-2xl text-gray-600 leading-relaxed">
+                    Showcasing our expertise in creating professional websites and digital solutions for clients across various industries.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- T1 Asset Management -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden fade-in">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67f2e62baa183dad659c372b_Franks%20(7)-p-1080.jpg" 
+                             alt="T1 Asset Management Website" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-3xl font-bold text-black mb-4 heading-font">T1 Asset Management</h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Franks Media crafted a sleek, modern website for T1 Asset Management, delivering a professional and polished online presence. The site features an intuitive, easy-to-navigate design that ensures visitors can quickly access key information about the company's services and expertise.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            With a clean aesthetic, responsive layout, and well-structured content, the website effectively communicates T1 Asset Management's credibility and industry knowledge while enhancing user experience.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://t1assetmanagement.co.uk" target="_blank" class="btn-primary text-white px-6 py-3 rounded-lg text-lg heading-font inline-flex items-center">
+                                <i class="fas fa-external-link-alt mr-3"></i> Visit website
+                            </a>
+                            <span class="text-gray-500 text-lg flex items-center">
+                                t1assetmanagement.co.uk
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yorkshire Property Charitable Trust -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden fade-in">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://cdn.prod.website-files.com/67f845f932f268860becd300/6865212c91feb618bf78eab8_Screenshot%202025-07-02%20130603-p-1080.png" 
+                             alt="Yorkshire Property Charitable Trust Website" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-3xl font-bold text-black mb-4 heading-font">Yorkshire Property Charitable Trust</h3>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Franks Media designed and developed a refined, contemporary website for the Yorkshire Property Charitable Trust, creating a digital presence that reflects the organisation's values and impact.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            The site balances elegance with clarity, featuring an intuitive layout that guides visitors through the Trust's mission, charitable initiatives, and community contributions.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://yorkshirepropertycharity.com" target="_blank" class="btn-primary text-white px-6 py-3 rounded-lg text-lg heading-font inline-flex items-center">
+                                <i class="fas fa-external-link-alt mr-3"></i> Visit website
+                            </a>
+                            <span class="text-gray-500 text-lg flex items-center">
+                                yorkshirepropertycharity.com
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Video Section -->
-    <section id="video" class="section-spacing bg-gray-50">
+    <section id="video" class="section-spacing bg-white">
         <div class="container-custom">
             <div class="text-center max-w-4xl mx-auto mb-20 fade-in">
                 <h2 class="text-5xl md:text-6xl font-bold text-black mb-8 display-font">Cinematic showcase</h2>
@@ -606,7 +684,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section-spacing bg-white">
+    <section id="about" class="section-spacing bg-gray-50">
         <div class="container-custom">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="fade-in">
@@ -663,7 +741,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-spacing bg-gray-50">
+    <section id="contact" class="section-spacing bg-white">
         <div class="container-custom">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div class="fade-in">
@@ -718,6 +796,7 @@
                                 <option value="aerial">Aerial photography</option>
                                 <option value="video">Video production</option>
                                 <option value="virtual">Virtual tours</option>
+                                <option value="website">Website design</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
@@ -773,7 +852,7 @@
                         <li><a href="#services" class="hover:text-black transition-colors">Aerial photography</a></li>
                         <li><a href="#services" class="hover:text-black transition-colors">Video production</a></li>
                         <li><a href="#services" class="hover:text-black transition-colors">Virtual tours</a></li>
-                        <li><a href="#services" class="hover:text-black transition-colors">3D perspectives</a></li>
+                        <li><a href="#services" class="hover:text-black transition-colors">Website design</a></li>
                     </ul>
                 </div>
                 
@@ -782,6 +861,7 @@
                     <ul class="space-y-4 text-gray-600 text-lg">
                         <li><a href="#about" class="hover:text-black transition-colors">About us</a></li>
                         <li><a href="#work" class="hover:text-black transition-colors">Portfolio</a></li>
+                        <li><a href="#projects" class="hover:text-black transition-colors">Projects</a></li>
                         <li><a href="#video" class="hover:text-black transition-colors">Video showcase</a></li>
                         <li><a href="#contact" class="hover:text-black transition-colors">Contact</a></li>
                     </ul>
