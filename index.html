@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Visual Dynamics | Professional Media Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo Space -->
+                <a href="#home" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-black to-gray-800 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">AV</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">APEX VISUAL</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active" data-page="home">Home</a>
+                    <a href="#work" class="nav-link" data-page="work">Our Work</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden hidden py-4 border-t border-gray-200">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link active" data-page="home">Home</a>
+                    <a href="#work" class="nav-link" data-page="work">Our Work</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active min-h-screen pt-20">
+        <!-- Hero Section -->
+        <div class="relative h-screen flex items-center justify-center bg-black">
+            <div class="absolute inset-0 bg-gradient-to-r from-black to-gray-900 opacity-90"></div>
+            <div class="relative z-10 text-center text-white px-4 fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">APEX VISUAL DYNAMICS</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Professional aerial photography, web design, and immersive media solutions for the modern enterprise</p>
+                <a href="#services" class="inline-block bg-white text-black px-8 py-4 font-semibold hover:bg-gray-100 transition-colors duration-300">
+                    EXPLORE SERVICES
+                </a>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-16 tracking-wide">OUR SERVICES</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Aerial Photography -->
+                    <div class="service-card group border border-gray-200 hover:border-black transition-all duration-300 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <i class="fas fa-camera-retro w-12 h-12 text-black"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AERIAL PHOTOGRAPHY</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">High-resolution aerial imagery captured with 48MP precision, delivering unparalleled visual clarity for property and project documentation.</p>
+                        <a href="#contact" class="inline-flex items-center font-semibold text-black hover:text-gray-700 transition-colors">
+                            Learn More
+                            <i class="fas fa-arrow-right ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Website Design -->
+                    <div class="service-card group border border-gray-200 hover:border-black transition-all duration-300 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <i class="fas fa-desktop w-12 h-12 text-black"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">WEBSITE DESIGN</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Modern, responsive web solutions engineered for performance, user engagement, and business growth with transparent development processes.</p>
+                        <a href="#contact" class="inline-flex items-center font-semibold text-black hover:text-gray-700 transition-colors">
+                            Learn More
+                            <i class="fas fa-arrow-right ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Virtual Tours -->
+                    <div class="service-card group border border-gray-200 hover:border-black transition-all duration-300 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <i class="fas fa-compass w-12 h-12 text-black"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">VIRTUAL TOURS</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Immersive 360-degree experiences utilizing advanced drone technology for interactive property and site exploration.</p>
+                        <a href="#contact" class="inline-flex items-center font-semibold text-black hover:text-gray-700 transition-colors">
+                            Learn More
+                            <i class="fas fa-arrow-right ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- 3D Perspectives -->
+                    <div class="service-card group border border-gray-200 hover:border-black transition-all duration-300 p-6 rounded-lg">
+                        <div class="mb-4">
+                            <i class="fas fa-cube w-12 h-12 text-black"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">3D PERSPECTIVES</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Precision digital replicas and interactive 3D models for comprehensive spatial analysis and presentation.</p>
+                        <a href="#contact" class="inline-flex items-center font-semibold text-black hover:text-gray-700 transition-colors">
+                            Learn More
+                            <i class="fas fa-arrow-right ml-2 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="work" class="page-section min-h-screen pt-20">
+        <div class="container mx-auto px-4 py-20">
+            <h2 class="text-4xl font-bold text-center mb-16 tracking-wide">OUR WORK</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Showcasing our professional work across the UK & Ireland. Contact us to explore our comprehensive 3D imagery portfolio.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group overflow-hidden rounded-lg shadow-md">
+                    <div class="aspect-video bg-gray-200 overflow-hidden">
+                        <img src="https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67f83e027c4b12950e3ee85a_Copy%20of%20Franks%20(3).jpg" 
+                             alt="Aerial Photography Sample" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Coastal Property</h3>
+                        <p class="text-gray-600">High-resolution aerial photography showcasing coastal property with stunning landscape views.</p>
+                    </div>
+                </div>
+                
+                <div class="group overflow-hidden rounded-lg shadow-md">
+                    <div class="aspect-video bg-gray-200 overflow-hidden">
+                        <img src="https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67f83e593a9bd65a99bd94e6_Copy%20of%20Franks%20(4).jpg" 
+                             alt="Virtual Tour Sample" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Urban Development</h3>
+                        <p class="text-gray-600">Comprehensive virtual tour of a large-scale urban development project.</p>
+                    </div>
+                </div>
+                
+                <div class="group overflow-hidden rounded-lg shadow-md">
+                    <div class="aspect-video bg-gray-200 overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-vr-cardboard w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                            <p class="text-gray-500">3D Interactive Model</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">3D Property Model</h3>
+                        <p class="text-gray-600">Interactive 3D model for architectural visualization and planning.</p>
+                    </div>
+                </div>
+                
+                <div class="group overflow-hidden rounded-lg shadow-md">
+                    <div class="aspect-video bg-gray-200 overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-globe w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                            <p class="text-gray-500">Website Project</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Corporate Website</h3>
+                        <p class="text-gray-600">Modern, responsive website design for a growing enterprise.</p>
+                    </div>
+                </div>
+                
+                <div class="group overflow-hidden rounded-lg shadow-md">
+                    <div class="aspect-video bg-gray-200 overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-building w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                            <p class="text-gray-500">Commercial Project</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Commercial Complex</h3>
+                        <p class="text-gray-600">Aerial documentation of a large commercial development.</p>
+                    </div>
+                </div>
+                
+                <div class="group overflow-hidden rounded-lg shadow-md">
+                    <div class="aspect-video bg-gray-200 overflow-hidden flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-eye w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                            <p class="text-gray-500">View Full Portfolio</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Complete Portfolio</h3>
+                        <p class="text-gray-600">Explore our full range of projects and capabilities.</p>
+                        <a href="#contact" class="inline-block mt-4 px-4 py-2 bg-black text-white font-semibold hover:bg-gray-800 transition-colors">
+                            Request Access
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section min-h-screen pt-20">
+        <div class="container mx-auto px-4 py-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 tracking-wide">ABOUT US</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Our Story</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Apex Visual Dynamics was founded with a vision to transform how businesses present their properties and projects through cutting-edge visual media.
+                        </p>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            We combine technical expertise with creative vision to deliver media solutions that not only document but elevate your assets.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            From aerial photography to immersive virtual experiences, we help our clients showcase their work in the most compelling way possible.
+                        </p>
+                    </div>
+                    <div class="bg-gray-100 aspect-square rounded-lg flex items-center justify-center">
+                        <i class="fas fa-rocket text-6xl text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-camera text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Precision</h3>
+                        <p class="text-gray-600">Every project is executed with meticulous attention to detail and technical precision.</p>
+                    </div>
+                    
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-lightbulb text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Innovation</h3>
+                        <p class="text-gray-600">We stay at the forefront of technology to deliver cutting-edge visual solutions.</p>
+                    </div>
+                    
+                    <div class="text-center p-6">
+                        <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-handshake text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Partnership</h3>
+                        <p class="text-gray-600">We work collaboratively with our clients to understand and achieve their vision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section min-h-screen pt-20">
+        <div class="container mx-auto px-4 py-20">
+            <h2 class="text-4xl font-bold text-center mb-16 tracking-wide">CONTACT US</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                    <p class="text-gray-600 mb-8">
+                        Ready to elevate your visual presence? Contact us to discuss your project requirements and how we can help bring your vision to life.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-gray-700"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-gray-600">info@apexvisual.co.uk</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-gray-700"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Phone</h4>
+                                <p class="text-gray-600">+44 (0) 123 456 7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-gray-700"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Location</h4>
+                                <p class="text-gray-600">Serving clients across the UK & Ireland</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Interest</label>
+                            <select id="service" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition">
+                                <option value="">Select a service</option>
+                                <option value="aerial">Aerial Photography</option>
+                                <option value="web">Website Design</option>
+                                <option value="virtual">Virtual Tours</option>
+                                <option value="3d">3D Perspectives</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" rows="5" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-black text-white py-3 font-semibold rounded-lg hover:bg-gray-800 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                            <span class="text-black font-bold">AV</span>
+                        </div>
+                        <span class="text-xl font-bold">APEX VISUAL</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Professional media solutions for the modern enterprise.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-white transition-colors">Aerial Photography</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Website Design</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Virtual Tours</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">3D Perspectives</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#work" class="hover:text-white transition-colors">Our Work</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Apex Visual Dynamics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // Set up navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Scroll to top when navigating
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Show home page by default
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
