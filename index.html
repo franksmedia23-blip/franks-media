@@ -1,773 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frank's Media | Premium Aerial Photography & Media Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            overflow-x: hidden;
-            background: #fefefe;
-            color: #1a1a1a;
-        }
-        .display-font {
-            font-family: 'Inter', serif;
-        }
-        .heading-font {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-        }
-        .hero-section {
-            background: linear-gradient(105deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 100%), 
-                        url('https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67f2da7e6ac4a8aeb5e62ca0_Franks%20(5).jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .service-card {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid #f0f0f0;
-            background: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #000, #2563eb);
-            transition: left 0.4s ease;
-        }
-        .service-card:hover::before {
-            left: 0;
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
-            border-color: #e5e5e5;
-        }
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -6px;
-            left: 0;
-            background: linear-gradient(90deg, #000, #2563eb);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .gallery-item {
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            overflow: hidden;
-            position: relative;
-        }
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-        .btn-primary {
-            background: #000;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #000, #2563eb, #000);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-        .btn-primary:hover::before {
-            left: 0;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        .btn-secondary {
-            border: 2px solid #fff;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-secondary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-        .btn-secondary:hover::before {
-            left: 0;
-        }
-        .btn-secondary:hover {
-            color: #000;
-            transform: translateY(-2px);
-        }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-        .contact-info-item {
-            transition: all 0.3s ease;
-            background: #fff;
-            border: 1px solid #f0f0f0;
-        }
-        .contact-info-item:hover {
-            transform: translateX(8px);
-            border-color: #2563eb;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        .stat-number {
-            background: linear-gradient(135deg, #000, #2563eb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            background: #000;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #000 0%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .container-custom {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        @media (min-width: 1536px) {
-            .container-custom {
-                max-width: 1400px;
-            }
-        }
-        .section-spacing {
-            padding: 6rem 0;
-        }
-        .footer-section {
-            background: #fff;
-            border-top: 1px solid #f0f0f0;
-        }
-        .floating-element {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .icon-wrapper {
-            transition: all 0.3s ease;
-        }
-        .service-card:hover .icon-wrapper {
-            transform: scale(1.1);
-            color: #2563eb;
-        }
-        .gradient-border {
-            position: relative;
-        }
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: -1px;
-            right: -1px;
-            bottom: -1px;
-            background: linear-gradient(45deg, #000, #2563eb, #000);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .gradient-border:hover::before {
-            opacity: 1;
-        }
-    </style>
-</head>
-<body class="bg-white text-gray-900">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white z-50 shadow-sm border-b border-gray-100">
-        <div class="container-custom">
-            <div class="flex justify-between items-center py-5">
-                <!-- Logo -->
-                <a href="#" class="flex items-center">
-                    <img src="https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67e5af864fc985c3297f9ac6_Add%20a%20subheading.png" 
-                         alt="Frank's Media Logo" 
-                         class="h-12 md:h-14">
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex space-x-10">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-black text-lg">Home</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-black text-lg">Services</a>
-                    <a href="#work" class="nav-link text-gray-700 hover:text-black text-lg">Portfolio</a>
-                    <a href="#video" class="nav-link text-gray-700 hover:text-black text-lg">Video</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-black text-lg">About</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-black text-lg">Contact</a>
-                </div>
-                
-                <!-- Contact Info -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <div class="text-right">
-                        <div class="text-sm font-semibold text-black heading-font">PREMIUM MEDIA SERVICES</div>
-                        <div class="text-xs text-gray-500 mt-1">info@franks-media.co.uk</div>
-                    </div>
-                    <a href="#contact" class="btn-primary text-white px-8 py-3 rounded-lg text-lg heading-font">Get Quote</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuButton" class="lg:hidden text-gray-700">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="lg:hidden hidden py-6 border-t border-gray-200">
-                <div class="flex flex-col space-y-6">
-                    <a href="#home" class="text-gray-700 hover:text-black text-xl font-medium">Home</a>
-                    <a href="#services" class="text-gray-700 hover:text-black text-xl font-medium">Services</a>
-                    <a href="#work" class="text-gray-700 hover:text-black text-xl font-medium">Portfolio</a>
-                    <a href="#video" class="text-gray-700 hover:text-black text-xl font-medium">Video</a>
-                    <a href="#about" class="text-gray-700 hover:text-black text-xl font-medium">About</a>
-                    <a href="#contact" class="text-gray-700 hover:text-black text-xl font-medium">Contact</a>
-                    <div class="pt-6 border-t border-gray-200">
-                        <div class="text-lg font-semibold text-black heading-font">PREMIUM MEDIA SERVICES</div>
-                        <div class="text-gray-500 mt-2">info@franks-media.co.uk</div>
-                        <a href="#contact" class="btn-primary text-white px-6 py-3 rounded-lg text-lg font-semibold mt-4 inline-block w-full text-center">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    
+    body {
+        font-family: 'Manrope', sans-serif;
+    }
+    
+    .display-font {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 700;
+    }
+    
+    .heading-font {
+        font-family: 'Manrope', sans-serif;
+        font-weight: 600;
+    }
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section min-h-screen flex items-center pt-20">
-        <div class="container-custom py-24">
-            <div class="max-w-4xl fade-in">
-                <div class="mb-8">
-                    <span class="text-blue-500 font-semibold tracking-widest text-lg heading-font">PREMIUM MEDIA SOLUTIONS</span>
-                </div>
-                <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-10 leading-tight display-font">
-                    ELEVATING<br>PERSPECTIVES
-                </h1>
-                <p class="text-2xl text-gray-200 mb-12 max-w-3xl leading-relaxed">
-                    Huddersfield's premier aerial photography and media studio, delivering exceptional visual narratives for discerning clients across the UK.
-                </p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="#contact" class="btn-primary text-white px-10 py-5 rounded-xl text-xl heading-font">Start Your Project</a>
-                    <a href="#work" class="btn-secondary text-white px-10 py-5 rounded-xl text-xl heading-font">View Portfolio</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    .hero-section span {
+        font-size: 1.125rem;
+        letter-spacing: 0.1em;
+        text-transform: none;
+        font-weight: 500;
+    }
 
-    <!-- Stats Section -->
-    <section class="section-spacing bg-white">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="text-center fade-in">
-                    <div class="stat-number text-5xl md:text-6xl font-bold mb-4 heading-font">48MP</div>
-                    <div class="text-gray-600 uppercase tracking-widest text-sm font-semibold">Professional Resolution</div>
-                </div>
-                <div class="text-center fade-in">
-                    <div class="stat-number text-5xl md:text-6xl font-bold mb-4 heading-font">4K 30FPS</div>
-                    <div class="text-gray-600 uppercase tracking-widest text-sm font-semibold">Cinematic Video</div>
-                </div>
-                <div class="text-center fade-in">
-                    <div class="stat-number text-5xl md:text-6xl font-bold mb-4 heading-font">100%</div>
-                    <div class="text-gray-600 uppercase tracking-widest text-sm font-semibold">Client Satisfaction</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    .stat-number + div {
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: 500;
+    }
 
-    <!-- Services Section -->
-    <section id="services" class="section-spacing bg-gray-50">
-        <div class="container-custom">
-            <div class="text-center max-w-4xl mx-auto mb-20 fade-in">
-                <h2 class="text-5xl md:text-6xl font-bold text-black mb-8 display-font">Our Services</h2>
-                <p class="text-2xl text-gray-600 leading-relaxed">
-                    Premium media solutions crafted to elevate your brand and showcase your properties through unparalleled visual storytelling.
-                </p>
-            </div>
+    nav .text-right div:first-child {
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: 600;
+    }
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                <!-- Aerial Photography -->
-                <div class="service-card rounded-2xl p-10 fade-in gradient-border">
-                    <div class="w-20 h-20 bg-black rounded-2xl flex items-center justify-center mb-8 icon-wrapper">
-                        <i class="fas fa-camera text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold text-black mb-6 heading-font">Aerial Photography</h3>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Professional drone photography capturing breathtaking high-resolution aerial perspectives for luxury properties, commercial projects, and exclusive events.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            48MP High Resolution
-                        </li>
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            Professional Editing Suite
-                        </li>
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            Multiple Angle Compositions
-                        </li>
-                    </ul>
-                    <a href="#contact" class="inline-flex items-center text-black font-semibold text-lg border-b-2 border-black pb-1 heading-font">
-                        Explore Service <i class="fas fa-arrow-right ml-3 transition-transform group-hover:translate-x-2"></i>
-                    </a>
-                </div>
+    #mobileMenu .pt-6 div:first-child {
+        text-transform: none;
+        letter-spacing: 0;
+        font-weight: 600;
+    }
 
-                <!-- Video Production -->
-                <div class="service-card rounded-2xl p-10 fade-in gradient-border">
-                    <div class="w-20 h-20 bg-black rounded-2xl flex items-center justify-center mb-8 icon-wrapper">
-                        <i class="fas fa-video text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold text-black mb-6 heading-font">Video Production</h3>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Cinematic aerial and ground video production in stunning 4K resolution, creating compelling visual narratives for premium brands and properties.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            4K 30FPS Cinematic Quality
-                        </li>
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            Professional Color Grading
-                        </li>
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            Dynamic Motion Sequences
-                        </li>
-                    </ul>
-                    <a href="#contact" class="inline-flex items-center text-black font-semibold text-lg border-b-2 border-black pb-1 heading-font">
-                        Explore Service <i class="fas fa-arrow-right ml-3 transition-transform group-hover:translate-x-2"></i>
-                    </a>
-                </div>
+    .service-card ul li {
+        font-weight: 400;
+    }
 
-                <!-- Virtual Tours -->
-                <div class="service-card rounded-2xl p-10 fade-in gradient-border">
-                    <div class="w-20 h-20 bg-black rounded-2xl flex items-center justify-center mb-8 icon-wrapper">
-                        <i class="fas fa-vr-cardboard text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold text-black mb-6 heading-font">Virtual Tours</h3>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Immersive 360-degree virtual experiences that transform property viewing into engaging digital journeys for discerning clients.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            360° Interactive Exploration
-                        </li>
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            Seamless Platform Integration
-                        </li>
-                        <li class="flex items-center text-gray-600 text-lg">
-                            <i class="fas fa-check text-blue-500 mr-4 text-xl"></i>
-                            Mobile-Optimized Experience
-                        </li>
-                    </ul>
-                    <a href="#contact" class="inline-flex items-center text-black font-semibold text-lg border-b-2 border-black pb-1 heading-font">
-                        Explore Service <i class="fas fa-arrow-right ml-3 transition-transform group-hover:translate-x-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    .gallery-item p {
+        font-weight: 400;
+    }
 
-    <!-- Divider -->
-    <div class="section-divider"></div>
+    .video-container + div p {
+        font-weight: 400;
+    }
 
-    <!-- Portfolio Section -->
-    <section id="work" class="section-spacing bg-white">
-        <div class="container-custom">
-            <div class="text-center max-w-4xl mx-auto mb-20 fade-in">
-                <h2 class="text-5xl md:text-6xl font-bold text-black mb-8 display-font">Our Portfolio</h2>
-                <p class="text-2xl text-gray-600 leading-relaxed">
-                    A curated selection of our premium aerial photography and media projects from across Huddersfield and the UK.
-                </p>
-            </div>
+    .contact-info-item p {
+        font-weight: 400;
+    }
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="gallery-item rounded-2xl overflow-hidden fade-in">
-                    <img src="https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67f83daebd5516a58d0f76f9_Copy%20of%20Franks%20(2)-p-500.jpg" 
-                         alt="Luxury Residential Property" 
-                         class="w-full h-96 object-cover">
-                    <div class="p-8 bg-white border border-t-0 border-gray-100">
-                        <h3 class="text-2xl font-bold text-black mb-3 heading-font">Luxury Estate</h3>
-                        <p class="text-gray-600 text-lg">Huddersfield countryside residence</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item rounded-2xl overflow-hidden fade-in">
-                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Urban Development Project" 
-                         class="w-full h-96 object-cover">
-                    <div class="p-8 bg-white border border-t-0 border-gray-100">
-                        <h3 class="text-2xl font-bold text-black mb-3 heading-font">Urban Development</h3>
-                        <p class="text-gray-600 text-lg">City center commercial project</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item rounded-2xl overflow-hidden fade-in">
-                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Countryside Landscape" 
-                         class="w-full h-96 object-cover">
-                    <div class="p-8 bg-white border border-t-0 border-gray-100">
-                        <h3 class="text-2xl font-bold text-black mb-3 heading-font">Rural Landscape</h3>
-                        <p class="text-gray-600 text-lg">Yorkshire countryside aerial</p>
-                    </div>
-                </div>
-            </div>
+    footer .text-lg {
+        font-weight: 400;
+    }
 
-            <div class="text-center mt-16 fade-in">
-                <a href="#contact" class="btn-primary text-white px-12 py-5 rounded-xl text-xl heading-font inline-flex items-center">
-                    <i class="fas fa-images mr-4 text-xl"></i> View Full Portfolio
-                </a>
-            </div>
-        </div>
-    </section>
+    .btn-primary, .btn-secondary {
+        text-transform: none;
+        letter-spacing: 0;
+    }
 
-    <!-- Video Section -->
-    <section id="video" class="section-spacing bg-gray-50">
-        <div class="container-custom">
-            <div class="text-center max-w-4xl mx-auto mb-20 fade-in">
-                <h2 class="text-5xl md:text-6xl font-bold text-black mb-8 display-font">Cinematic Showcase</h2>
-                <p class="text-2xl text-gray-600 leading-relaxed">
-                    Experience our premium 4K video production capabilities through this cinematic showcase of aerial videography excellence.
-                </p>
-            </div>
+    h1, h2, h3, h4, h5, h6 {
+        text-transform: none;
+        letter-spacing: -0.02em;
+    }
 
-            <div class="max-w-5xl mx-auto fade-in">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/TG7lhhD_dLg" 
-                            title="Frank's Media Cinematic Showcase" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="text-center mt-12">
-                    <p class="text-gray-600 text-xl">Professional 4K aerial videography showcasing our capabilities in cinematic storytelling.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    .service-card a {
+        font-weight: 600;
+    }
 
-    <!-- About Section -->
-    <section id="about" class="section-spacing bg-white">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in">
-                    <h2 class="text-5xl md:text-6xl font-bold text-black mb-10 display-font">About Frank's Media</h2>
-                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                        Frank's Media stands as Huddersfield's premier media company, specializing in premium aerial photography, cinematic video production, and immersive digital solutions. Our commitment to excellence drives every project we undertake.
-                    </p>
-                    <p class="text-xl text-gray-600 mb-12 leading-relaxed">
-                        We transform visions into compelling visual narratives, leveraging state-of-the-art technology and artistic expertise to deliver media that not only documents but elevates your projects to new heights.
-                    </p>
-                    <div class="flex flex-wrap gap-8">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                                <i class="fas fa-shield-alt text-white text-lg"></i>
-                            </div>
-                            <span class="text-gray-700 font-semibold text-lg heading-font">Fully Licensed & Insured</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                                <i class="fas fa-rocket text-white text-lg"></i>
-                            </div>
-                            <span class="text-gray-700 font-semibold text-lg heading-font">Cutting-Edge Technology</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                                <i class="fas fa-palette text-white text-lg"></i>
-                            </div>
-                            <span class="text-gray-700 font-semibold text-lg heading-font">Professional Editing</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="fade-in">
-                    <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Professional Drone Operation" 
-                             class="w-full h-auto">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    form label {
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: 0;
+    }
 
-    <!-- CTA Section -->
-    <section class="section-spacing bg-black text-white">
-        <div class="container-custom text-center fade-in">
-            <h2 class="text-5xl md:text-6xl font-bold mb-10 display-font">Ready to Elevate Your Vision?</h2>
-            <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Contact us today to discuss your premium media requirements. We'll craft a bespoke solution that brings your vision to life with unparalleled quality.
-            </p>
-            <a href="#contact" class="btn-secondary bg-transparent text-white px-14 py-5 rounded-xl text-xl heading-font inline-flex items-center">
-                <i class="fas fa-paper-plane mr-4 text-xl"></i> Start Your Project
-            </a>
-        </div>
-    </section>
+    footer h3 {
+        font-weight: 600;
+    }
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-spacing bg-gray-50">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <div class="fade-in">
-                    <h2 class="text-5xl md:text-6xl font-bold text-black mb-10 display-font">Get In Touch</h2>
-                    <p class="text-xl text-gray-600 mb-12 leading-relaxed">
-                        Interested in our premium media services? Complete the form and we'll respond promptly to discuss how we can elevate your project with our expertise.
-                    </p>
-                    
-                    <div class="space-y-8">
-                        <div class="contact-info-item flex items-start space-x-6 p-8 rounded-2xl">
-                            <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-black text-2xl mb-2 heading-font">Location</h3>
-                                <p class="text-gray-600 text-lg">Huddersfield, West Yorkshire</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info-item flex items-start space-x-6 p-8 rounded-2xl">
-                            <div class="w-16 h-16 bg-black rounded-2xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-white text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-black text-2xl mb-2 heading-font">Email</h3>
-                                <p class="text-gray-600 text-lg">info@franks-media.co.uk</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <form class="bg-white rounded-2xl p-10 border border-gray-100 shadow-sm">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <label for="name" class="block text-lg font-semibold text-gray-700 mb-4 heading-font">Your Name</label>
-                                <input type="text" id="name" required 
-                                       class="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition text-lg">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-lg font-semibold text-gray-700 mb-4 heading-font">Email Address</label>
-                                <input type="email" id="email" required 
-                                       class="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition text-lg">
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <label for="service" class="block text-lg font-semibold text-gray-700 mb-4 heading-font">Service Interest</label>
-                            <select id="service" required 
-                                    class="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition text-lg">
-                                <option value="">Select a service</option>
-                                <option value="aerial">Aerial Photography</option>
-                                <option value="video">Video Production</option>
-                                <option value="virtual">Virtual Tours</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-10">
-                            <label for="message" class="block text-lg font-semibold text-gray-700 mb-4 heading-font">Project Details</label>
-                            <textarea id="message" rows="6" required 
-                                      class="w-full px-6 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-transparent outline-none transition resize-none text-lg"></textarea>
-                        </div>
-                        
-                        <button type="submit" 
-                                class="w-full btn-primary text-white py-5 font-semibold rounded-xl text-xl heading-font">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer-section py-16">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div>
-                    <div class="mb-6">
-                        <img src="https://cdn.prod.website-files.com/67e5aee6238f1e81a1eb36f4/67e5af864fc985c3297f9ac6_Add%20a%20subheading.png" 
-                             alt="Frank's Media Logo" 
-                             class="h-14">
-                    </div>
-                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                        Huddersfield's premier aerial photography and media studio, delivering exceptional visual narratives.
-                    </p>
-                    <div class="flex space-x-5">
-                        <a href="#" class="text-gray-400 hover:text-black transition-colors text-2xl">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-black transition-colors text-2xl">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-black transition-colors text-2xl">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-black transition-colors text-2xl">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-2xl mb-6 heading-font">Services</h3>
-                    <ul class="space-y-4 text-gray-600 text-lg">
-                        <li><a href="#services" class="hover:text-black transition-colors">Aerial Photography</a></li>
-                        <li><a href="#services" class="hover:text-black transition-colors">Video Production</a></li>
-                        <li><a href="#services" class="hover:text-black transition-colors">Virtual Tours</a></li>
-                        <li><a href="#services" class="hover:text-black transition-colors">3D Perspectives</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-2xl mb-6 heading-font">Company</h3>
-                    <ul class="space-y-4 text-gray-600 text-lg">
-                        <li><a href="#about" class="hover:text-black transition-colors">About Us</a></li>
-                        <li><a href="#work" class="hover:text-black transition-colors">Portfolio</a></li>
-                        <li><a href="#video" class="hover:text-black transition-colors">Video Showcase</a></li>
-                        <li><a href="#contact" class="hover:text-black transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="font-bold text-2xl mb-6 heading-font">Contact Info</h3>
-                    <ul class="space-y-4 text-gray-600 text-lg">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mr-4 mt-1 text-gray-400"></i>
-                            <span>Huddersfield, West Yorkshire</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mr-4 mt-1 text-gray-400"></i>
-                            <span>info@franks-media.co.uk</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-200 mt-16 pt-8 text-center text-gray-500 text-lg">
-                <p>&copy; 2023 Frank's Media. All rights reserved. | Premium Aerial Photography & Media Solutions</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu functionality
-        document.getElementById('mobileMenuButton').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', fadeInOnScroll);
-        window.addEventListener('load', fadeInOnScroll);
-    </script>
-</body>
-</html>
+    .border-t + div p {
+        font-weight: 400;
+        text-transform: none;
+    }
+</style>
